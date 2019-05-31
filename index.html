@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="application-name" content="Shopping List 20190531">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+        <link rel="stylesheet" href="shoppinglist.css">
+
+        <title>Shopping List | vanilla JavaScript | PouchDB</title>
+    </head>
+    <body>
+        <!-- banner -->
+        <header>
+            <nav id="nav">
+                <div>
+                    <span>
+                        <span id="header-title">Shopping Lists</span>
+                    </span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- content area -->
+        <main>
+            <div id="shopping-lists">
+                <!-- shopping lists get inserted here -->
+            </div>
+
+            <ul id="shopping-list-items">
+                <!-- shopping list items get inserted here -->
+            </ul>
+
+            <!-- add more stuff button -->
+            <button id="add-button" onclick="shopper.openadd()">
+                <i>add</i>
+            </button>
+        </main>
+
+        <!-- modal: add a shopping list form -->
+        <div>
+            <form id="shopping-list-add" onsubmit="shopper.add(event); return false">
+                <div>
+                    <h5>Create a Shopping List</h5>
+                    <div>
+                        <div>
+                            <input type="text" 
+                            name="title" 
+                            placeholder="Enter a title for the shopping list" 
+                            required>
+                        </div>
+                        <input type="hidden" name="type" value="list">
+                    </div>
+                </div>
+                <div>
+                    <button>Cancel</button>
+                    <button>Add</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- modal: overlay -->
+        <div onclick="shopper.closeadd()"></div>
+
+        <!-- template: shopping list -->
+        <script type="text/template" id="shopping-list-template">
+            <div>
+                <div>
+                    <span>{{title}}</span>
+                </div>
+            </div>
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/pouchdb@6.3.4/dist/pouchdb.min.js"></script>
+        <script src="shoppinglist.js"></script>
+        <script src="shoppinglist.model.js"></script>
+    </body>
+</html>
